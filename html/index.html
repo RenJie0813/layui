@@ -1,0 +1,351 @@
+<html lang="en"><head>
+    <title>Index</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="聚商，充值，聚商平台">
+    <meta name="description" content="聚商商务平台————游戏代理分销，诚信公正的商务平台登录页">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../dist/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../dist/template.js"></script>
+
+<body>
+    <div id="contanier">
+        <header class="layui-form" id="header"></header>
+        <!--大厅数据列表-->
+        <main id="hall" style="height: 530px;">
+            <div id="banner">
+            </div>
+            <p id="online">在线人数<span id="lineNum">1536</span>人</p>
+            <div id="main">
+                <ul id="main-list">
+                </ul>
+            </div>
+        </main>
+
+        <!--详情模块-->
+        <section id="goodsInfo">
+            <div class="top">
+                <div class="top_left">
+                    <div class="logoImg"><img src="" alt=""></div>
+                    <p>比例：100=100</p>
+                </div>
+                <div class="dlInfo">
+                    <p>游戏ID：<span id="gameid">12345</span></p>
+                    <p>账号余额：<span id="myMoney">12455</span>（游戏币）</p>
+                    <p><button class="layui-btn layui-btn-small layui-btn-warm" id="payBtn">充值</button></p>
+                </div>
+                <div class="dlEdit">
+                    <!--<button id="sqBtn" class="layui-btn layui-btn-warm">申请代理</button>-->
+                    <div id="edit_btn_group">
+                        <div>
+                            <button id="setCard" class="layui-btn layui-btn-warm">设置名片</button>
+                        </div>
+                        <div>
+                            <button id="sell" class="layui-btn layui-btn-warm">销售</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="single"><button class="layui-btn layui-btn-warm" id="request">申请代理</button></div>
+            </div>
+            <div class="btnGroup">
+                <button class="layui-btn layui-btn-normal">综合排序</button>
+                <button class="layui-btn layui-btn-normal">价格排序</button>
+                <button class="layui-btn layui-btn-normal">存货排序</button>
+                <button class="layui-btn layui-btn-normal">买/卖</button>
+            </div>
+            <div class="businesList" id="info-list" style="height: 332px;">
+                <table id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>
+                            <span>商家名称</span>
+                            <span class="long">比例</span>
+                            <span>数量</span>
+                            <span>价格</span>
+                            <span></span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="table-list">
+                    <tr>
+                        <td>
+                            <p>
+                                <span class="sell red">买</span>
+                                <span class="pub">花花<br>商行</span>
+                                <span class="pub_name">花花商行asdasdasdasdasdasd</span>
+                            </p>
+                            <p class="long">100=100</p>
+                            <p>100</p>
+                            <p>￥100</p>
+                            <p>
+                                <button class="layui-btn layui-btn-warm layui-btn-small deal" data-i="sell">购买</button>
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!--底部导航-->
+        <nav id="nav">
+
+        </nav>
+    </div>
+    <script src="../module/js/common.js"></script>
+
+<!--大厅数据模板-->
+<!--<script type="text/html" id="hall_M">-->
+<!--<ul id="main-list">-->
+<!--{{each data}}-->
+<!--<li>-->
+<!--<div>-->
+<!--<div class="logoImg">-->
+<!--<img src="" alt="">-->
+<!--</div>-->
+<!--<div class="desc">-->
+<!--<p class="title">{{$value.title}}</p>-->
+<!--<p class="num">{{$value.dl}}</p>-->
+<!--<p><button class="layui-btn layui-btn-small t5 {{$value.is==1?'layui-btn-warm':'layui-btn-normal'}}">{{$value.is==1?'申请代理':'已代理'}}</button></p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="dealInfo">-->
+<!--<p class="eg">比例：<span>{{$value.max}}</span></p>-->
+<!--<p class="dealNum">成交量 <span>{{$value.deal}}</span></p>-->
+<!--</div>-->
+<!--</li>-->
+<!--{{/each}}-->
+<!--</ul>-->
+<!--</script>-->
+
+<!--销售模板-->
+<script type="text/html" id="sales_M">
+    <div id="sales" class="layui-form">
+        <div class="containerForm">
+            <div class="layui-form-item">
+                <label class="layui-form-label">玩家ID：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="playerID" required lay-verify="required" placeholder="请输入玩家ID" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">转出游戏币</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="moneyNum" required lay-verify="required|isNumber" placeholder="请输入转出游戏币" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <p class="msg">一经转出无法收回！请确认上述信息是否正确</p>
+        <div class="layui-form-item">
+            <div class="input-block">
+                <button type="reset" class="layui-btn layui-btn-primary resetBtn">取消</button>
+                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="deal">确定</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--发布-->
+<script type="text/html" id="pub">
+    <div id="pub-choose">
+        <div class="input-block">
+            <button class="layui-btn layui-btn-normal layui-btn-big" >买入</button>
+        </div>
+        <div class="input-block">
+            <button class="layui-btn layui-btn-normal layui-btn-big" >卖出</button>
+        </div>
+    </div>
+</script>
+
+<!--申请代理模板-->
+<script type="text/html" id="is-send">
+    <div id="is-req" class="layui-form">
+        <p class="msg">您未代理当前游戏，是否申请代理</p>
+        <div class="layui-form-item">
+            <div class="input-block">
+                <button type="reset" class="layui-btn layui-btn-primary resetBtn">取消</button>
+                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="req">申请代理</button>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="send-req">
+    <div id="req-form" class="layui-form">
+        <div class="containerForm">
+            <h1 class="msg">申请代理</h1>
+            <div class="layui-form-item">
+                <label class="layui-form-label">QQ号：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="qq" required lay-verify="required|isNumber" placeholder="请输入QQ号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">微信号：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="weixin" required lay-verify="required" placeholder="请输入微信号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">支付宝：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="ali" required lay-verify="required" placeholder="请输入支付宝" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <p class="msg">请随时关注页面右上角提醒消息</p>
+        <div class="layui-form-item">
+            <div class="input-block">
+                <button type="reset" class="layui-btn layui-btn-primary resetBtn">取消</button>
+                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="send-req">提交申请</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--出售/购买订单模板-->
+<script type="text/html" id="buy_M">
+    <div id="buy" class="layui-form">
+        <table class="layui-table" lay-even lay-skin="nob">
+            <colgroup>
+                <col width="130">
+                <col width="220">
+            </colgroup>
+            <tbody>
+            <tr>
+                <td>游戏：</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>ID：</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>{{temp}}数量：</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>{{temp}}价格：</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="input-block">
+            <button type="reset" class="layui-btn layui-btn-primary resetBtn">取消</button>
+            <button class="layui-btn layui-btn-warm" lay-submit lay-filter="sure_deal" data-i="{{temp}}">确认订单</button>
+        </div>
+    </div>
+</script>
+
+<!--支付密码模板-->
+<script type="text/html" id="pay_Pwd">
+    <div id="pwd" class="layui-form">
+        <div class="containerForm">
+            <p class="type">{{title}}</p>
+            <p class="price">￥:&nbsp;<span>{{money}}</span></p>
+            <p class="game-money">折合游戏币<span>******</span></p>
+            <div class="layui-form-item">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <input type="password" name="pay_pwd" id="payPwdText" required lay-verify="required" maxlength="6" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--官方充值模板-->
+<script type="text/html" id="pub_Pay">
+    <div id="gamePay" class="layui-form">
+        <table class="layui-table" lay-even lay-skin="nob">
+            <colgroup>
+                <col width="130">
+                <col width="220">
+            </colgroup>
+            <tbody>
+            <tr>
+                <td>游戏：</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>ID：</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>交易比例：</td>
+                <td>出:100=100 收:100=102</td>
+            </tr>
+            <tr>
+                <td>充值金额：</td>
+                <td>
+                    ￥<input type="text" class="pay-money" value="0"/>
+                </td>
+            </tr>
+            <tr>
+                <td>游戏币：</td>
+                <td>123442</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="input-block">
+            <button type="reset" class="layui-btn layui-btn-primary resetBtn">取消</button>
+            <button class="layui-btn layui-btn-warm" lay-submit lay-filter="sure_deal" data-i="{{temp}}">提交订单</button>
+        </div>
+    </div>
+</script>
+
+<!--设置名片模板-->
+<script type="text/html" id="set-div">
+    <div id="set-info" class="layui-form">
+        <div id="left-div">
+            <div id="relative">
+                <input type="file" accept="image/*" name="head-img"  id="dl-imgFile">
+                <div id="dl-up" class="relative">点击上传头像
+                    <img src="" alt="" id="dl-img">
+                </div>
+            </div>
+        </div>
+        <div id="right-div">
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="nickname" required lay-verify="required" placeholder="花花商行"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">QQ号：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="qq" required lay-verify="required|isNumber" placeholder="请输入QQ号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">微信号：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="weixin" required lay-verify="required" placeholder="请输入微信号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">支付宝：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="ali" required lay-verify="required" placeholder="请输入支付宝" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-clear"></div>
+        <p class="msg">该名片信息将在游戏内进行展示，请确认无误后保存</p>
+        <div class="input-block">
+            <button type="reset" class="layui-btn layui-btn-primary resetBtn">取消</button>
+            <button class="layui-btn layui-btn-warm" lay-submit lay-filter="set-card" data-i="{{temp}}">确定</button>
+        </div>
+    </div>
+</script>
+
+<script src="../module/js/jquery.min.js"></script>
+<script src="../dist/layui/layui.js"></script>
+<script src="../module/js/index.js"></script>
+
+
+</body>
+</html>

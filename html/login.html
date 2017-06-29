@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>login</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="聚商，充值，聚商平台">
+    <meta name="description" content="聚商商务平台————游戏代理分销，诚信公正的商务平台登录页">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="../dist/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div id="loginForm">
+        <div>
+            <div class="logo"></div>
+            <p class="slogan">商务平台·游戏代理分销</p>
+        </div>
+        <form name="login" action="" class="layui-form" onkeydown="if(event.keyCode==13){document.getElementById('loginbtn').click()}else{return}">
+            <div class="container">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号</label>
+                    <div class="layui-input-block input-short">
+                        <input type="text" name="username" maxlength="16" required lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block input-short">
+                        <input type="password" name="pwd" maxlength="16" required lay-verify="required|checkPwdL" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <p class="t-right"><button class="layui-btn layui-btn-mini layui-btn-primary" onclick="return false">联系客服</button></p>
+            <p class="t-center"><button id="loginbtn" lay-submit lay-filter="login" class="loginbtn layui-btn  layui-btn-warm" onclick="return false">登 录</button></p>
+        </form>
+    </div>
+
+    <div class="layui-hide"  id="login">
+        <form name="addInfo" class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <div class="layui-input-block input-short relative">
+                    <input type="file" accept="image/*" name="headImg"  id="imgFile">
+                    <div id="upImage" class="relative">上传头像
+                        <img src="" alt="" id="preview">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称：</label>
+                <div class="layui-input-block input-short">
+                    <input type="text" name="title" required lay-verify="required" minlength="4" maxlength="12" placeholder="请设置昵称" autocomplete="off" class="layui-input">
+                    <i id="state" class="layui-icon state">&#xe618;</i>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">登录密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="pwd" required lay-verify="required|checkPwd" placeholder="请设置6位登录密码" autocomplete="off" class="layui-input">
+                    <i id="pwd-state" class="layui-icon state">&#xe618;</i>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认登录密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="pwd_2" required lay-verify="required|checkPwd" placeholder="请再次输入登录密码" autocomplete="off" class="layui-input">
+                    <i id="pwd2-state" class="layui-icon state">&#xe618;</i>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">卡号：</label>
+                <div class="layui-input-block">
+                    <input type="number" id="cardNum" name="cardNum" required lay-verify="required" placeholder="请输入卡号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择银行：</label>
+                <div class="layui-input-block" id="bank-div">
+                    <select name="bank" id="bank" lay-verify="required">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">开户姓名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="peoson" required lay-verify="required" placeholder="请输入该卡开户姓名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">交易密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="deal_Pwd" required lay-verify="required|number|checkPwdL" placeholder="请设置6位交易密码" autocomplete="off" class="layui-input">
+                    <i id="d-state" class="layui-icon state">&#xe618;</i>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认交易密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="deal_Pwd2" required lay-verify="required|number|checkPwdL" placeholder="请再次输入交易密码" autocomplete="off" class="layui-input">
+                    <i id="d2-state" class="layui-icon state">&#xe618;</i>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="finishInfo" id="finish">完成设置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <script src="../module/js/jquery.min.js"></script>
+    <script src="../dist/layui/layui.js"></script>
+    <script src="../module/js/login.js"></script>
+
+</body>
+
+</html>
